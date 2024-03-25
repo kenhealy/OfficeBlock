@@ -21,7 +21,7 @@ public class Company {
     public Company(String companyName, String ownerName) {
         this.companyName = companyName;
         this.ownerName = ownerName;
-        hireStaff(5);
+       
     }
     
     public void hireStaff(int numOfStaff){
@@ -52,10 +52,9 @@ public class Company {
         
         System.out.println(e1);
                 
+        System.out.println(e2);
         
-        System.out.println(e1.getFirstName() + " is a " + e1.getJobTitle());
-        System.out.println(e2.getFirstName() + " is a " + e2.getJobTitle());
-        System.out.println(e3.getFirstName() + " is a " + e3.getJobTitle());
+        System.out.println(e3);
         
         
         System.out.println(e1.getFirstName() + " says " + e1.work());
