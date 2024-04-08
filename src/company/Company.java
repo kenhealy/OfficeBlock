@@ -4,7 +4,10 @@
  */
 package company;
 
+import Generators.NameGenerator;
 import employee.*;
+import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -16,50 +19,79 @@ public class Company {
     //PROPERTIES
     private String companyName;
     private String ownerName;
-    private Employee e1, e2, e3;
+    private ArrayList<Employee> staff ; 
+    private int nextAvailableEmpID;
 
     public Company(String companyName, String ownerName) {
         this.companyName = companyName;
         this.ownerName = ownerName;
-       
+        this.staff = new ArrayList<Employee>(); //an empty list of employees
+        this.nextAvailableEmpID =1;
     }
     
     public void hireStaff(int numOfStaff){
      
         //** NOTE FROM KEN **//
-        /*
-           We will have to change this code in a few weeks
         
-           At the moment, it does not use the numOfSTaff at all
-        */
         
-        //Make a simple employee
-        e1 = new Employee("Ken", "Healy", 1, "Menial Android", "12345TY");
-        
-        //now make a Project Manager
-        e2 = new ProjectManager("Sarah", "Costa", 2, "4523623QW");
-        
-        e3 = new JavaSpecialist("Wesley", "Crusher", 3, "gyeweu21");
-        
+        for (int i=0; i< numOfStaff; i++){
+            
+            NameGenerator ng = new NameGenerator();
+            String wholename = ng.getRandomName();
+            
+            Random r = new Random();
+            
+            int pick = r.nextInt(3); //not quite perfect yet
+            
+            String firstName, surname;
+            
+            firstName = wholename.split(" ")[0];
+            surname = wholename.split(" ")[1];
+            
+            
+            int empID = this.nextAvailableEmpID;
+            this.nextAvailableEmpID++; //make sure it increases
+            
+            String PPSN = "1234567X"; //silly default
+            
+            //use a decision to pick the job title
+            switch (pick){
+                
+                case 0:
+                    //Java Specialist
+                    staff.add(new JavaSpecialist(firstName, surname, empID, PPSN));
+                    break;
+                case 1:
+                    // ProjectManager
+                    staff.add(new ProjectManager(firstName, surname, empID, PPSN));
+                    break;
+                case 2:
+                    // Receptionist
+                    staff.add(new Receptionist(firstName, surname, empID, PPSN));
+                    break;
+                default:
+                    System.out.println("ERROR! Invalid Employee Type!");
+            }
+        }
     }
+    
     
     public void startWork(){
         
-        /*
-        THIS WILL ALSO NEED TO BE CHANGED
-        IT ISN'T GOOD YET
+        /* 
+            for ( int i=0; i< staff.size() ; i++){
+        
+                String name = staff.get(i).getFirstName();
+            }
         */
         
-        System.out.println(e1);
-                
-        System.out.println(e2);
+        //this is a fancy way of doing the loop :)
+        for (Employee e: staff){
+            
+            System.out.println(e.getFirstName() + " is a " + e.getJobTitle() + " and says " + e.work());
+        }
         
-        System.out.println(e3);
-        
-        
-        System.out.println(e1.getFirstName() + " says " + e1.work());
-        System.out.println(e2.getFirstName() + " says " +e2.work());
-        System.out.println(e3.getFirstName() + " says " +e3.work());
+       
     }
     
 }
