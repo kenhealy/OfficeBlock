@@ -41,7 +41,7 @@ public class Company {
             
             Random r = new Random();
             
-            int pick = r.nextInt(3); //not quite perfect yet
+            int pick = r.nextInt(4); //not quite perfect yet
             
             String firstName, surname;
             
@@ -67,7 +67,11 @@ public class Company {
                     break;
                 case 2:
                     // Receptionist
+                                     
                     staff.add(new Receptionist(firstName, surname, empID, PPSN));
+                    break;
+                case 3:
+                    staff.add(new NetworkTechnician(firstName, surname, empID, PPSN));
                     break;
                 default:
                     System.out.println("ERROR! Invalid Employee Type!");

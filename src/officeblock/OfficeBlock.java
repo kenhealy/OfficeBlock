@@ -15,7 +15,7 @@ public class OfficeBlock {
 
    
     //Properties of an 'Office block' (or Office Building)
-    private int numFloors;
+    private final int numFloors;
     private Company[] tenantCompanies; 
     
     

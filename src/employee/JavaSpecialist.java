@@ -18,5 +18,12 @@ public class JavaSpecialist extends Employee{
         this.wallet = 100;
         
     }
+
+    @Override
+    public String work() {
+       
+        
+        return "I think there is a bug in my code.";
+    }
     
 }

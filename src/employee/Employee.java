@@ -8,14 +8,14 @@ package employee;
  *
  * @author kheal
  */
-public class Employee {
+public abstract class Employee {
     
     //PROPERTIES (attributes)
     private String firstName;
     private String surname;
-    private int employeeID;
+    private final int employeeID;
     private String jobTitle;
-    private String ppsn;
+    private final String ppsn;
     protected double wallet; //can be accessed by child class
     
     //Constructors
@@ -33,10 +33,11 @@ public class Employee {
 
     //METHODS (Abilities/ Behaviours)
    
-    public String work(){
-        
-        return ("Hi ho, hi ho...it's off to work I go");
-    }
+    /**
+     * Simple method to describe the work done
+     * @return a String describing the work done
+     */
+    public abstract String work(); // any child of EMployee must have a work method
 
     
     //GETTERS AND SETTERS
@@ -60,7 +61,7 @@ public class Employee {
         this.surname = surname;
     }
 
-    public int getEmployeeID() {
+    public int getEmployeeID() {       
         return employeeID;
     }
 
